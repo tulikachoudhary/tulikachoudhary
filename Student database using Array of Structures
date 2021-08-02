@@ -1,0 +1,225 @@
+// using C programing language 
+
+//header files inclusion 
+#include<stdio.h>     
+#include<string.h>
+#include<stdlib.h>
+
+//function prototype 
+void display(int);
+
+struct student             // structure 
+{
+  int roll,maths,DS,DE,total;
+  char name[20];
+  float avg;
+ }s[5],temp;
+
+void main()
+{
+	int i,ch,n,a,pos,ch1,no,n1=0,j,m,c1,flag=0;
+	char search[20],modi[20],new[20];
+	
+printf("\n enter total number of students=");
+scanf("%d",&n);
+
+printf("\n Enter the student information:");
+ for(i=0;i<n;i++)
+{
+	printf("\n Enter roll number: ");
+	scanf("%d",&s[i].roll);
+	printf("\n Enter name of the student: ");
+	scanf("%s",s[i].name);
+	printf("\n Enter marks of three subjects: ");
+	scanf("%d%d%d",&s[i].maths,&s[i].DS,&s[i].DE);
+
+	s[i].total=s[i].maths+s[i].DS+s[i].DE;
+	s[i].avg=s[i].total/3.00;
+	printf("\n Average=%.2f",s[i].avg);
+}
+display(n);
+	 while(1)
+	 {
+
+		 printf("\n\nMenu:\n1:Search\n2:Modify\n3:Append\n4:Sort\n5:Exit\n");
+		 printf("\n Enter the choice::");
+		 scanf("%d",&ch);
+		 switch(ch)
+		 {
+		   case 1: printf("\n Enter name of the student whose data is to be searched=");
+			   scanf("%s",search);
+			    for(i=0;i<n;i++)
+			    {
+			     a=strcmp(search,s[i].name);
+			       if(a==0)
+			       {
+				pos=i;  
+				break;
+			       }
+			    }
+			    if(a==0)
+			    printf("\n%d\t\t%s\t%d\t%d\t%d\t%d\t%.2f",s[pos].roll,s[pos].name,s[pos].maths,s[pos].DS,s[pos].DE,s[pos].total,s[pos].avg);
+			    else
+			    printf("\n Data not present\n");
+			 break;
+		   case 2: do
+			   {
+			   printf("\n1.Modify roll no.\n2.modify name\n3.modify maths\n4.modify DS\n5.modify DE");
+			   printf("\n Enter choice::");
+			   scanf("%d",&ch1);
+
+			       switch(ch1)
+			       {
+				   case 1:printf("\n Enter roll number to be modified:");
+					  scanf("%d",&no);
+					  for(i=0;i<n;i++)
+					  {
+					   if(s[i].roll==no)
+					    {
+					     printf("\n enter new roll number=");
+					     scanf("%d",&s[i].roll);
+					     printf("\n%d\t\t%s\t%d\t%d\t%d\t%d\t%.2f",s[i].roll,s[i].name,s[i].maths,s[i].DS,s[i].DE,s[i].total,s[i].avg);
+					     break;
+					    }
+					  }
+					  
+				  break;
+
+				  case 2: printf("\nEnter name to be modified=");
+					  scanf("%s",modi);
+					   for(i=0;i<n;i++)
+					     {
+					       a=strcmp(modi,s[i].name);
+						 if(a==0)
+						 {
+						   printf("\n Enter new name=");
+						   scanf("%s",new);
+						   strcpy(s[i].name,new);
+
+						   printf("\n%d\t\t%s\t%d\t%d\t%d\t%d\t%.2f",s[i].roll,s[i].name,s[i].maths,s[i].DS,s[i].DE,s[i].total,s[i].avg);
+						   break;
+						 }
+					     }
+					    
+				   break;
+
+				   case 3: printf("\n enter roll no.=");
+					   scanf("%d",&no);
+					   for(i=0;i<n;i++)
+					  {
+					   if(s[i].roll==no)
+					    {
+					     printf("\n enter marks=");
+					     scanf("%d",&s[i].maths);
+					     s[i].total=s[i].maths+s[i].DS+s[i].DE;
+					     s[i].avg=s[i].total/3.00;
+					     printf("\n Average=%.2f",s[i].avg);
+					     printf("\n%d\t\t%s\t%d\t%d\t%d\t%d\t%.2f",s[i].roll,s[i].name,s[i].maths,s[i].DS,s[i].DE,s[i].total,s[i].avg);
+					     break;
+					    }
+					  }
+					  
+				   break;
+
+				   case 4: printf("\n enter roll no.=");
+					   scanf("%d",&no);
+					   for(i=0;i<n;i++)
+					  {
+					   if(s[i].roll==no)
+					    {
+					     printf("\n enter marks=");
+					   
+					     scanf("%d",&s[i].DS);
+					     s[i].total=s[i].maths+s[i].DS+s[i].DE;
+					     s[i].avg=s[i].total/3.00;
+					     printf("\n Average=%.2f",s[i].avg);
+					     printf("\n%d\t\t%s\t%d\t%d\t%d\t%d\t%.2f",s[i].roll,s[i].name,s[i].maths,s[i].DS,s[i].DE,s[i].total,s[i].avg);
+					     break;
+					    }
+					  }
+					  
+				   break;
+
+				   case 5: printf("\n enter the roll no.==");
+					   scanf("%d",&no);
+					   for(i=0;i<n;i++)
+					  {
+					   if(s[i].roll==no)
+					    {
+					     printf("\n enter the marks=");
+					     scanf("%d",&s[i].DE);
+					     s[i].total=s[i].maths+s[i].DS+s[i].DE;
+					     s[i].avg=s[i].total/3.00;
+					     printf("\n Average=%.2f",s[i].avg);
+					     printf("\n%d\t\t%s\t%d\t%d\t%d\t%d\t%.2f",s[i].roll,s[i].name,s[i].maths,s[i].DS,s[i].DE,s[i].total,s[i].avg);
+					     break;
+					    }
+					  }
+					  
+				    break;
+
+				    default: exit(0);
+			       }
+		printf("\n do you want to continue for modification press yes:1 or no :0  = ");
+			      
+			       scanf("%d",&c1);
+
+			     }while(c1==1);
+		   break;
+		   case 3: printf("\nEnter number of entries to be added=");
+			   scanf("%d",&n1);
+			   m=n+n1;
+			    for(i=n;i<m;i++)
+			    {
+			    printf("\n Enter the roll number: ");
+			    scanf("%d",&s[i].roll);
+			    printf("\n Enter the name of student: ");
+			    scanf("%s",s[i].name);
+			    printf("\n Enter marks of three subjects: ");
+			    scanf("%d%d%d",&s[i].maths,&s[i].DS,&s[i].DE);
+
+			    s[i].total=s[i].maths+s[i].DS+s[i].DE;
+			    s[i].avg=s[i].total/3.00;
+			    printf("\n Average=%.2f",s[i].avg);
+			    printf("\n%d\t\t%s\t%d\t%d\t%d\t%d\t%.2f",s[i].roll,s[i].name,s[i].maths,s[i].DS,s[i].DE,s[i].total,s[i].avg);
+			    
+			    }
+                             n=m;
+			  display(n);
+		   break;
+		   case 4: printf("\n bubble sort");
+			   for(i=0;i<n-1;i++)
+			    {
+				for(j=0;j<n-i-1;j++)
+				{
+				  if(s[j].roll>s[j+1].roll)
+				  {
+				  temp = s[j];
+				  s[j]=s[j+1];
+				  s[j+1]=temp;
+				  }
+				}
+			    }
+			 display(n);
+		   break;
+		   default: exit(0);
+
+		   }//end of switch..case
+	 }//end of while
+
+}//end of main
+
+
+void display(int n)
+{
+int i;
+printf("\n\t\t Database of students");
+printf("\n------------------------------------------------------------");
+printf("\nRoll No.\tName\tmaths\tDS\tDE\tTotal\tAverage\n");
+printf("\n------------------------------------------------------------");
+for(i=0;i<n;i++)
+ {
+  printf("\n%d\t\t%s\t%d\t%d\t%d\t%d\t%.2f",s[i].roll,s[i].name,s[i].maths,s[i].DS,s[i].DE,s[i].total,s[i].avg);
+ }
+}//end of display function
+
